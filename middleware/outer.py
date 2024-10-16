@@ -16,5 +16,5 @@ class FirstOuterMiddleware(BaseMiddleware):
         event: TelegramObject,
         data: Dict[str, Any]
     ) -> Any:
-        if event.message.chat.type == 'private':
+        if event.chat.type == 'private':
             return await handler(event, data)
