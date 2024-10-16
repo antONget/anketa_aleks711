@@ -5,6 +5,7 @@ from aiogram.enums import ParseMode
 from aiogram.types import ErrorEvent
 # from aiogram.fsm.storage.redis import RedisStorage
 from handlers import handler_user, other_handlers
+from middleware.outer import FirstOuterMiddleware
 from config_data.config import Config, load_config
 from database.models import async_main
 
@@ -40,7 +41,7 @@ async def main():
     # Регистрируем router в диспетчере
     dp.include_router(handler_user.router)
     dp.include_router(other_handlers.router)
-
+    dp.message.middleware(FirstOuterMiddleware())
     @dp.error()
     async def error_handler(event: ErrorEvent):
         logger.critical("Критическая ошибка: %s", event.exception, exc_info=True)
