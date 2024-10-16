@@ -21,3 +21,11 @@ def keyboards_get_contact() -> ReplyKeyboardMarkup:
         resize_keyboard=True
     )
     return keyboard
+
+
+def keyboard_send() -> InlineKeyboardMarkup:
+    logging.info("keyboard_send")
+    button_1 = InlineKeyboardButton(text='Отправить', callback_data=f'send_content')
+    button_2 = InlineKeyboardButton(text='Добавить', callback_data=f'add_content')
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[button_2], [button_1]],)
+    return keyboard
