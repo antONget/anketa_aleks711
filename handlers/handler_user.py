@@ -213,13 +213,13 @@ async def send_add_content(callback: CallbackQuery, state: FSMContext, bot: Bot)
                                                   f' чтобы познакомиться поближе\n\n'
                                                   f'https://t.me/kirianov_al',
                                              reply_markup=None)
-            first_text = f'Пользователь @{callback.message.from_user.username} оставил запрос на продажу автомобиля'
+            first_text = f'Пользователь @{callback.from_user.username} оставил запрос на продажу автомобиля'
         elif action == 'bay':
             await callback.message.edit_text(text=f'🤖 Благодарю за обращение, мы свяжемся с вами для консультации в ближайшее время,'
                                                   f' а пока вступайте в наш канал, чтобы познакомиться поближе\n\n'
                                                   f'https://t.me/kirianov_al',
                                              reply_markup=None)
-            first_text = f'Пользователь @{callback.message.from_user.username} оставил запрос на покупку автомобиля'
+            first_text = f'Пользователь @{callback.from_user.username} оставил запрос на покупку автомобиля'
         for admin in config.tg_bot.admin_ids.split(','):
             try:
                 for item in content:
